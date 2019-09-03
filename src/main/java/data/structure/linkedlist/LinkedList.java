@@ -1,6 +1,7 @@
 package data.structure.linkedlist;
 
 import data.model.Node;
+
 import java.util.logging.Logger;
 
 /**
@@ -33,7 +34,8 @@ public class LinkedList<T extends Comparable> {
     }
 
     /**
-     * случаи:
+     * Удаляет элемент из списка
+     * Случаи:
      * 1: Пустой список: ничего не делать.
      * 2: Один элемент: установить Previous = null.
      * 3: Несколько элементов:
@@ -44,8 +46,8 @@ public class LinkedList<T extends Comparable> {
      * @return true если элемент был удален, иначе false
      */
     public boolean remove(T item) {
-        Node previous = null;
-        Node current = head;
+        Node<T> previous = null;
+        Node<T> current = head;
 
         while (current != null) {
             if (current.getValue().equals(item)) {
@@ -76,7 +78,9 @@ public class LinkedList<T extends Comparable> {
     }
 
     /**
-     * @param item - элемент, который хотим найти в списке
+     * Ищет элемент в списке
+     *
+     * @param item - элемент который необходимо найти
      * @return true если элемент найден, иначе false
      */
     public boolean contains(T item) {
@@ -91,7 +95,7 @@ public class LinkedList<T extends Comparable> {
     }
 
     /**
-     * удаляет все элементы из списка
+     * Удаляет все элементы из списка
      */
     public void clear() {
         head = null;
@@ -100,7 +104,7 @@ public class LinkedList<T extends Comparable> {
     }
 
     /**
-     * копирует список в заданный массив, с заданного индекса в массиве
+     * Копирует список в заданный массив, с заданного индекса в массиве
      *
      * @param array      - массив, в который будет копироваться спислк
      * @param arrayIndex - индекс, с которого будет заполняться массив
