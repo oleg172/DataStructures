@@ -3,7 +3,7 @@ package data.structure.queue;
 
 import data.structure.linkedlist.DoubleLinkedList;
 
-public class Queue<T>
+public class Queue<T extends Comparable>
 {
     private DoubleLinkedList<T> items = new DoubleLinkedList<T>();
 

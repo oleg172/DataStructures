@@ -3,7 +3,7 @@ package data.structure.stack;
 
 import data.structure.linkedlist.DoubleLinkedList;
 
-public class Stack<T>
+public class Stack<T extends Comparable>
 {
     private DoubleLinkedList<T> items = new DoubleLinkedList<T>();
 
