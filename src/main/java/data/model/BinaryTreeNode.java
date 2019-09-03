@@ -1,10 +1,10 @@
-package model;
+package data.model;
 
 public class BinaryTreeNode<T extends Comparable>
 {
-    T value;
-    BinaryTreeNode<T> left;
-    BinaryTreeNode<T> right;
+    private T value;
+    private BinaryTreeNode<T> left;
+    private BinaryTreeNode<T> right;
 
     public BinaryTreeNode(T value)
     {

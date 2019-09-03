@@ -1,10 +1,11 @@
-package structure.stack;
+package data.structure.stack;
 
-import linkedlist.DoubleLinkedList;
+
+import data.structure.linkedlist.DoubleLinkedList;
 
 public class Stack<T>
 {
-    DoubleLinkedList<T> items = new DoubleLinkedList<T>();
+    private DoubleLinkedList<T> items = new DoubleLinkedList<T>();
 
     public void push(T value)
     {
@@ -15,7 +16,7 @@ public class Stack<T>
     {
         if (items.size() == 0)
         {
-            System.out.println("The structure.stack is empty");
+            System.out.println("The data.structure.stack is empty");
         }
 
         T result = items.getTail().getValue();
@@ -28,7 +29,7 @@ public class Stack<T>
     {
         if (items.size() == 0)
         {
-            System.out.println("The structure.stack is empty");
+            System.out.println("The data.structure.stack is empty");
         }
         return items.getTail().getValue();
     }

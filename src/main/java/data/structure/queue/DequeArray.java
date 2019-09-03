@@ -1,15 +1,15 @@
-package queue;
+package data.structure.queue;
 
 
 public class DequeArray
 {
-    int[] items = new int[0];
+    private int[] items = new int[0];
 
-    int size = 0;
+    private int size = 0;
 
-    int head = 0;
+    private int head = 0;
 
-    int tail = -1;
+    private int tail = -1;
 
     private void allocateNewArray(int startingIndex)
     {

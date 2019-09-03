@@ -1,6 +1,7 @@
-package linkedlist;
+package data.structure.linkedlist;
 
-import model.LinkedListNode;
+
+import data.model.LinkedListNode;
 
 public class DoubleLinkedList<T>
 {

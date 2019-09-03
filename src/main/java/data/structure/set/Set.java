@@ -1,11 +1,11 @@
-package structure.set;
+package data.structure.set;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Set<T extends Comparable>
 {
-    List<T> items = new ArrayList<T>();
+    private List<T> items = new ArrayList<T>();
 
     public Set()
     {

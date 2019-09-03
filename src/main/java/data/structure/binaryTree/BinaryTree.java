@@ -1,9 +1,10 @@
-package binaryTree;
+package data.structure.binaryTree;
 
-import model.BinaryTreeNode;
+
+import data.model.BinaryTreeNode;
 
 public class BinaryTree<T extends Comparable> {
-    BinaryTreeNode<T> head;
+    private BinaryTreeNode<T> head;
     private int count;
 
     public void add(T value) {
@@ -35,7 +36,7 @@ public class BinaryTree<T extends Comparable> {
         }
     }
 
-    BinaryTreeNode<T> parent;
+    private BinaryTreeNode<T> parent;
 
     public boolean remove(T value) {
         BinaryTreeNode<T> current;

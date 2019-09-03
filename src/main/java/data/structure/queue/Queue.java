@@ -1,10 +1,11 @@
-package queue;
+package data.structure.queue;
 
-import linkedlist.DoubleLinkedList;
+
+import data.structure.linkedlist.DoubleLinkedList;
 
 public class Queue<T>
 {
-    DoubleLinkedList<T> items = new DoubleLinkedList<T>();
+    private DoubleLinkedList<T> items = new DoubleLinkedList<T>();
 
     public void enqueue(T value)
     {
@@ -15,7 +16,7 @@ public class Queue<T>
     {
         if (items.size() == 0)
         {
-            throw new Exception("The queue is empty");
+            throw new Exception("The data.structure.queue is empty");
         } else
         {
             T last = items.getTail().getValue();
@@ -28,7 +29,7 @@ public class Queue<T>
     {
         if (items.size() == 0)
         {
-            throw new Exception("The queue is empty");
+            throw new Exception("The data.structure.queue is empty");
         } else
         {
             return items.getTail().getValue();
