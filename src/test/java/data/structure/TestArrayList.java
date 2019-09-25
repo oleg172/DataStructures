@@ -70,7 +70,7 @@ public class TestArrayList {
     }
 
     @Test
-    public void testRemoveAtt() {
+    public void testRemoveAt() {
         list.removeAt(1);
         Assert.assertEquals(3, list.getCount());
         Assert.assertEquals(Integer.valueOf(0), list.getElement(0));
@@ -79,7 +79,7 @@ public class TestArrayList {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testRemoveAttException() {
+    public void testRemoveAtException() {
         list.removeAt(4);
     }
 
