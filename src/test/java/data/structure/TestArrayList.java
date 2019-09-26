@@ -21,14 +21,14 @@ public class TestArrayList {
     @Test
     public void testDefaultInitialization() {
         list = new ArrayList<Integer>();
-        Assert.assertEquals(0, list.getCount());
+        Assert.assertEquals(0, list.getSize());
         Assert.assertEquals(0, list.toArray().length);
     }
 
     @Test
     public void testInitialization() {
         list = new ArrayList<Integer>(10);
-        Assert.assertEquals(0, list.getCount());
+        Assert.assertEquals(0, list.getSize());
         Assert.assertEquals(10, list.toArray().length);
     }
 
@@ -37,7 +37,7 @@ public class TestArrayList {
         list = new ArrayList<Integer>(2);
         list.insert(0, 1);
         list.insert(1, 2);
-        Assert.assertEquals(2, list.getCount());
+        Assert.assertEquals(2, list.getSize());
         Assert.assertEquals(Integer.valueOf(1), list.getElement(0));
         Assert.assertEquals(Integer.valueOf(2), list.getElement(1));
     }
@@ -48,7 +48,7 @@ public class TestArrayList {
         list.insert(0, 1);
         list.insert(1, 2);
         list.insert(0, 3);
-        Assert.assertEquals(3, list.getCount());
+        Assert.assertEquals(3, list.getSize());
         Assert.assertEquals(Integer.valueOf(3), list.getElement(0));
         Assert.assertEquals(Integer.valueOf(1), list.getElement(1));
         Assert.assertEquals(Integer.valueOf(2), list.getElement(2));
@@ -64,7 +64,7 @@ public class TestArrayList {
         list = new ArrayList<Integer>(2);
         list.add(0);
         list.add(1);
-        Assert.assertEquals(2, list.getCount());
+        Assert.assertEquals(2, list.getSize());
         Assert.assertEquals(Integer.valueOf(0), list.getElement(0));
         Assert.assertEquals(Integer.valueOf(1), list.getElement(1));
     }
@@ -72,7 +72,7 @@ public class TestArrayList {
     @Test
     public void testRemoveAt() {
         list.removeAt(1);
-        Assert.assertEquals(3, list.getCount());
+        Assert.assertEquals(3, list.getSize());
         Assert.assertEquals(Integer.valueOf(0), list.getElement(0));
         Assert.assertEquals(Integer.valueOf(0), list.getElement(1));
         Assert.assertEquals(Integer.valueOf(2), list.getElement(2));
@@ -87,7 +87,7 @@ public class TestArrayList {
     public void testRemoveFirstEqualsObject() {
         boolean isRemove = list.remove(0);
         Assert.assertTrue(isRemove);
-        Assert.assertEquals(3, list.getCount());
+        Assert.assertEquals(3, list.getSize());
         Assert.assertEquals(Integer.valueOf(1), list.getElement(0));
         Assert.assertEquals(Integer.valueOf(0), list.getElement(1));
         Assert.assertEquals(Integer.valueOf(2), list.getElement(2));
@@ -97,7 +97,7 @@ public class TestArrayList {
     public void testRemoveNonExistenObject() {
         boolean isRemove = list.remove(5);
         Assert.assertFalse(isRemove);
-        Assert.assertEquals(4, list.getCount());
+        Assert.assertEquals(4, list.getSize());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class TestArrayList {
     @Test
     public void testClear() {
         list.clear();
-        Assert.assertEquals(0, list.getCount());
+        Assert.assertEquals(0, list.getSize());
         Assert.assertEquals(0, list.toArray().length);
     }
 
@@ -145,7 +145,7 @@ public class TestArrayList {
 
     @Test
     public void testGetCount() {
-        Assert.assertEquals(4, list.getCount());
+        Assert.assertEquals(4, list.getSize());
     }
 
     @Test

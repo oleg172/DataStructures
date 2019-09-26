@@ -3,7 +3,7 @@ package data.structure.arrayList;
 public class ArrayList<T extends Comparable> {
 
     private Object[] items;
-    private int count;
+    private int size;
 
     /**
      * Инициализация коллекции
@@ -49,12 +49,12 @@ public class ArrayList<T extends Comparable> {
             throw new IllegalArgumentException("Index should be less than array size. " +
                     "Array size = " + items.length + "; index = " + index);
         }
-        if (items.length == count) {
+        if (items.length == size) {
             growArray();
         }
-        System.arraycopy(items, index, items, index + 1, count - index);
+        System.arraycopy(items, index, items, index + 1, size - index);
         items[index] = item;
-        count++;
+        size++;
     }
 
     /**
@@ -64,12 +64,12 @@ public class ArrayList<T extends Comparable> {
      * @param item - добавляемый элемент
      */
     public void add(T item) {
-        if (items.length == count) {
+        if (items.length == size) {
             growArray();
         }
-        items[count] = item;
+        items[size] = item;
 
-        count++;
+        size++;
     }
 
     /**
@@ -78,14 +78,14 @@ public class ArrayList<T extends Comparable> {
      * @param index - позиция с которой будет удален элемент
      */
     public void removeAt(int index) {
-        if (index >= count) {
+        if (index >= size) {
             throw new IndexOutOfBoundsException();
         }
         int shiftStart = index + 1;
-        if (shiftStart < count) {
-            System.arraycopy(items, shiftStart, items, index, count - shiftStart);
+        if (shiftStart < size) {
+            System.arraycopy(items, shiftStart, items, index, size - shiftStart);
         }
-        count--;
+        size--;
     }
 
     /**
@@ -95,7 +95,7 @@ public class ArrayList<T extends Comparable> {
      * @return true если объект был удален, иначе false
      */
     public boolean remove(T item) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < size; i++) {
             if (items[i].equals(item)) {
                 removeAt(i);
                 return true;
@@ -112,7 +112,7 @@ public class ArrayList<T extends Comparable> {
      * Если такого элемента нет, то возвращается -1
      */
     public int indexOf(T item) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < size; i++) {
             if (items[i].equals(item)) {
                 return i;
             }
@@ -128,11 +128,11 @@ public class ArrayList<T extends Comparable> {
      * если index больше количества элементов в массиве выбрасывается исключение IllegalArgumentException
      */
     public T getElement(int index) {
-        if (index < count) {
+        if (index < size) {
             return (T) items[index];
         }
         throw new IllegalArgumentException("Index should be less than array size. " +
-                "Array size = " + count + "; index = " + index);
+                "Array size = " + size + "; index = " + index);
     }
 
     /**
@@ -150,7 +150,7 @@ public class ArrayList<T extends Comparable> {
      */
     public void clear() {
         items = new Object[0];
-        count = 0;
+        size = 0;
     }
 
     /**
@@ -160,14 +160,14 @@ public class ArrayList<T extends Comparable> {
      * @param index - позиция с которой необходимо начать вставлять элементы в коллекцию array
      */
     public void copyTo(T[] array, int index) {
-        System.arraycopy(items, 0, array, index, count);
+        System.arraycopy(items, 0, array, index, size);
     }
 
     /**
      * @return количество элементов в  коллекции
      */
-    public int getCount() {
-        return count;
+    public int getSize() {
+        return size;
     }
 
     /**
