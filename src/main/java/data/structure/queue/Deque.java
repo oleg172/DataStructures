@@ -1,11 +1,11 @@
 package data.structure.queue;
 
 
-import data.structure.linkedlist.DoubleLinkedList;
+import data.structure.list.LinkedList;
 
 public class Deque<T extends Comparable>
 {
-    private DoubleLinkedList<T> items = new DoubleLinkedList<T>();
+    private LinkedList<T> items = new LinkedList<T>();
 
     public void enqueueFirst(T value)
     {

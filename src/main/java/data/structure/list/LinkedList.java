@@ -1,4 +1,4 @@
-package data.structure.linkedlist;
+package data.structure.list;
 
 import data.model.DoubleLinkedNode;
 
@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 /**
  * Двусвязный список
  */
-public class DoubleLinkedList<T extends Comparable> {
+public class LinkedList<T extends Comparable> {
 
-    private Logger log = Logger.getLogger(DoubleLinkedList.class.getName());
+    private Logger log = Logger.getLogger(LinkedList.class.getName());
 
     private DoubleLinkedNode<T> head;
     private DoubleLinkedNode<T> tail;

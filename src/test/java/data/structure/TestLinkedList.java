@@ -1,6 +1,6 @@
 package data.structure;
 
-import data.structure.linkedlist.LinkedList;
+import data.structure.list.LinkedList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,101 +11,70 @@ public class TestLinkedList {
 
     @Before
     public void setUp() {
-
         list = new LinkedList<Integer>();
-        list.add(1);
-        list.add(2);
-        list.add(5);
-        list.add(7);
+        list.addFirst(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
     }
 
     @Test
-    public void testAddElements() {
-
-        list.add(8);
+    public void testAddFirstElement() {
+        list.addFirst(5);
 
         Assert.assertEquals(5, list.size());
-        Assert.assertTrue(list.contains(1));
-        Assert.assertTrue(list.contains(2));
-        Assert.assertTrue(list.contains(5));
-        Assert.assertTrue(list.contains(7));
-        Assert.assertTrue(list.contains(8));
+        Assert.assertEquals(Integer.valueOf(5), list.getHead().getValue());
     }
 
     @Test
     public void testRemoveFirstElement() {
-
-        list.remove(1);
-
-        Integer[] array = new Integer[3];
-        list.copyTo(array, 0);
-
-        Integer[] expectedArray = new Integer[3];
-        expectedArray[0] = 2;
-        expectedArray[1] = 5;
-        expectedArray[2] = 7;
+        list.removeFirst();
 
         Assert.assertEquals(3, list.size());
-        Assert.assertArrayEquals(expectedArray, array);
-    }
-
-    @Test
-    public void testRemoveMiddleElement() {
-
-        list.remove(2);
-
-        Integer[] array = new Integer[3];
-        list.copyTo(array, 0);
-
-        Integer[] expectedArray = new Integer[3];
-        expectedArray[0] = 1;
-        expectedArray[1] = 5;
-        expectedArray[2] = 7;
-
-        Assert.assertEquals(3, list.size());
-        Assert.assertArrayEquals(expectedArray, array);
+        Assert.assertEquals(Integer.valueOf(2), list.getHead().getValue());
     }
 
     @Test
     public void testRemoveLastElement() {
-
-        list.remove(7);
-
-        Integer[] array = new Integer[3];
-        list.copyTo(array, 0);
-
-        Integer[] expectedArray = new Integer[3];
-        expectedArray[0] = 1;
-        expectedArray[1] = 2;
-        expectedArray[2] = 5;
+        list.removeLast();
 
         Assert.assertEquals(3, list.size());
-        Assert.assertArrayEquals(expectedArray, array);
+        Assert.assertEquals(Integer.valueOf(3), list.getTail().getValue());
+    }
+
+    @Test
+    public void testRemoveMiddleElement() {
+        list.remove(2);
+
+        Assert.assertEquals(3, list.size());
+        Assert.assertFalse(list.contains(2));
     }
 
     @Test
     public void testRemoveNotExistingElement() {
-
-        list.remove(9);
-
-        Integer[] array = new Integer[4];
-        list.copyTo(array, 0);
-
-        Integer[] expectedArray = new Integer[4];
-        expectedArray[0] = 1;
-        expectedArray[1] = 2;
-        expectedArray[2] = 5;
-        expectedArray[3] = 7;
+        list.remove(10);
 
         Assert.assertEquals(4, list.size());
-        Assert.assertArrayEquals(expectedArray, array);
     }
 
     @Test
     public void testContains() {
+        Assert.assertTrue(list.contains(1));
+        Assert.assertFalse(list.contains(10));
+    }
 
-        Assert.assertTrue(list.contains(2));
-        Assert.assertFalse(list.contains(8));
+    @Test
+    public void testGetSize() {
+        Assert.assertEquals(4, list.size());
+    }
+
+    @Test
+    public void testClear() {
+        list.clear();
+
+        Assert.assertEquals(0, list.size());
+        Assert.assertNull(list.getHead());
+        Assert.assertNull(list.getTail());
     }
 
     @Test
@@ -117,22 +86,24 @@ public class TestLinkedList {
         Integer[] expectedArray = new Integer[4];
         expectedArray[0] = 1;
         expectedArray[1] = 2;
-        expectedArray[2] = 5;
-        expectedArray[3] = 7;
+        expectedArray[2] = 3;
+        expectedArray[3] = 4;
 
-        Assert.assertEquals(4, list.size());
         Assert.assertArrayEquals(expectedArray, array);
     }
 
     @Test
-    public void testGetSize() {
-        Assert.assertEquals(4, list.size());
-    }
+    public void testCopyToReverseArray() {
 
-    @Test
-    public void testClear() {
+        Integer[] array = new Integer[4];
+        list.copyToReverse(array, 0);
 
-        list.clear();
-        Assert.assertEquals(0, list.size());
+        Integer[] expectedArray = new Integer[4];
+        expectedArray[0] = 4;
+        expectedArray[1] = 3;
+        expectedArray[2] = 2;
+        expectedArray[3] = 1;
+
+        Assert.assertArrayEquals(expectedArray, array);
     }
 }

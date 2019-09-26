@@ -1,4 +1,4 @@
-package data.structure.linkedlist;
+package data.structure.list;
 
 import data.model.Node;
 
@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 /**
  * Односвязный список
  */
-public class LinkedList<T extends Comparable> {
+public class List<T extends Comparable> {
 
-    private Logger log = Logger.getLogger(LinkedList.class.getName());
+    private Logger log = Logger.getLogger(List.class.getName());
 
     private Node<T> head;
     private Node<T> tail;
