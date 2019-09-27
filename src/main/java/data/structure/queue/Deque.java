@@ -1,72 +1,96 @@
 package data.structure.queue;
 
-
 import data.structure.list.LinkedList;
 
-public class Deque<T extends Comparable>
-{
+/**
+ * Двусторонняя очередь
+ */
+public class Deque<T extends Comparable> {
+
     private LinkedList<T> items = new LinkedList<T>();
 
-    public void enqueueFirst(T value)
-    {
+    /**
+     * Элемент добавляется в начало очереди
+     *
+     * @param value - значение, добавляемое в очередь
+     */
+    public void enqueueFirst(T value) {
         items.addFirst(value);
     }
 
-    public void enqueueLast(T value)
-    {
+    /**
+     * Элемент добавляется в конец очереди
+     *
+     * @param value - значение, добавляемое в очередь
+     */
+    public void enqueueLast(T value) {
         items.addLast(value);
     }
 
-    public T dequeueFirst() throws Exception
-    {
-        if (items.size() == 0)
-        {
-            throw new Exception("The data.structure.queue is empty");
-        } else
-        {
+    /**
+     * Возвращает первый элемент из очереди, удаляя его из очереди
+     * Если очередь пуста, выбрасывается исключение IllegalStateException
+     *
+     * @return первый элемент из очереди
+     */
+    public T dequeueFirst() {
+        if (items.size() == 0) {
+            throw new IllegalStateException("The queue is empty");
+        } else {
             T first = items.getHead().getValue();
             items.removeFirst();
             return first;
         }
     }
 
-    public T dequeueLast() throws Exception
-    {
-        if (items.size() == 0)
-        {
-            throw new Exception("The data.structure.queue is empty");
-        } else
-        {
+    /**
+     * Возвращает последний элемент из очереди, удаляя его из очереди
+     * Если очередь пуста, выбрасывается исключение IllegalStateException
+     *
+     * @return последний элемент из очереди
+     */
+    public T dequeueLast() {
+        if (items.size() == 0) {
+            throw new IllegalStateException("The queue is empty");
+        } else {
             T last = items.getTail().getValue();
             items.removeLast();
             return last;
         }
     }
 
-    public T peekFirst() throws Exception
-    {
-        if (items.size() == 0)
-        {
-            throw new Exception("The data.structure.queue is empty");
-        } else
-        {
+    /**
+     * Возвращает первый элемент из очереди
+     * Если очередь пуста, выбрасывается исключение IllegalStateException
+     *
+     * @return первый элемент в очереди
+     */
+    public T peekFirst() {
+        if (items.size() == 0) {
+            throw new IllegalStateException("The queue is empty");
+        } else {
             return items.getHead().getValue();
         }
     }
 
-    public T peekLast() throws Exception
-    {
-        if (items.size() == 0)
-        {
-            throw new Exception("The data.structure.queue is empty");
-        } else
-        {
+    /**
+     * Возвращает последний элемент из очереди
+     * Если очередь пуста, выбрасывается исключение IllegalStateException
+     *
+     * @return последний элемент из очереди
+     */
+    public T peekLast() {
+        if (items.size() == 0) {
+            throw new IllegalStateException("The queue is empty");
+        } else {
             return items.getTail().getValue();
         }
     }
 
-    public int size()
-    {
+    /**
+     * @return возвращает количество элементов в очереди
+     */
+    public int size() {
         return items.size();
     }
 }
