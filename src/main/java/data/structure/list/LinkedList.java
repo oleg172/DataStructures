@@ -1,6 +1,6 @@
 package data.structure.list;
 
-import data.model.DoubleLinkedNode;
+import data.model.LinkedNode;
 
 import java.util.logging.Logger;
 
@@ -11,8 +11,8 @@ public class LinkedList<T extends Comparable> {
 
     private Logger log = Logger.getLogger(LinkedList.class.getName());
 
-    private DoubleLinkedNode<T> head;
-    private DoubleLinkedNode<T> tail;
+    private LinkedNode<T> head;
+    private LinkedNode<T> tail;
     private int count;
 
     /**
@@ -21,8 +21,8 @@ public class LinkedList<T extends Comparable> {
      * @param value - добавляемое значение
      */
     public void addFirst(T value) {
-        DoubleLinkedNode<T> node = new DoubleLinkedNode<T>(value);
-        DoubleLinkedNode<T> temp = head;
+        LinkedNode<T> node = new LinkedNode<T>(value);
+        LinkedNode<T> temp = head;
         head = node;
         head.setNext(temp);
 
@@ -40,7 +40,7 @@ public class LinkedList<T extends Comparable> {
      * @param value - добавляемое значение
      */
     public void addLast(T value) {
-        DoubleLinkedNode<T> node = new DoubleLinkedNode<T>(value);
+        LinkedNode<T> node = new LinkedNode<T>(value);
 
         if (count == 0) {
             head = node;
@@ -99,8 +99,8 @@ public class LinkedList<T extends Comparable> {
      * @return true если элемент был удален, иначе false
      */
     public boolean remove(T item) {
-        DoubleLinkedNode<T> previous = null;
-        DoubleLinkedNode<T> current = head;
+        LinkedNode<T> previous = null;
+        LinkedNode<T> current = head;
 
         while (current != null) {
             if (current.getValue().equals(item)) {
@@ -134,7 +134,7 @@ public class LinkedList<T extends Comparable> {
      * @return true если элемент содержится в списке, иначе false
      */
     public boolean contains(T item) {
-        DoubleLinkedNode<T> current = head;
+        LinkedNode<T> current = head;
         while (current != null) {
             if (current.getValue().equals(item)) {
                 return true;
@@ -160,7 +160,7 @@ public class LinkedList<T extends Comparable> {
      * @param arrayIndex - индекс, с которого будет заполняться массив
      */
     public void copyTo(T[] array, int arrayIndex) {
-        DoubleLinkedNode<T> current = head;
+        LinkedNode<T> current = head;
         while (current != null) {
             array[arrayIndex++] = current.getValue();
             current = current.getNext();
@@ -174,7 +174,7 @@ public class LinkedList<T extends Comparable> {
      * @param arrayIndex - индекс, с которого будет заполняться массив
      */
     public void copyToReverse(T[] array, int arrayIndex) {
-        DoubleLinkedNode<T> current = tail;
+        LinkedNode<T> current = tail;
         while (current != null) {
             array[arrayIndex++] = current.getValue();
             current = current.getPrevious();
@@ -195,7 +195,7 @@ public class LinkedList<T extends Comparable> {
      *
      * @return конец списка
      */
-    public DoubleLinkedNode<T> getTail() {
+    public LinkedNode<T> getTail() {
         return tail;
     }
 
@@ -204,7 +204,7 @@ public class LinkedList<T extends Comparable> {
      *
      * @return начало списка
      */
-    public DoubleLinkedNode<T> getHead() {
+    public LinkedNode<T> getHead() {
         return head;
     }
 
@@ -212,7 +212,7 @@ public class LinkedList<T extends Comparable> {
      * Печатает элементы списка в формате: "Узел №" number = value
      */
     public void print() {
-        DoubleLinkedNode<T> current = head;
+        LinkedNode<T> current = head;
         int count = 0;
         while (current != null) {
             log.info("Узел №" + count + " = " + current.getValue());
