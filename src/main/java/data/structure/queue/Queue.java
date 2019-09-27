@@ -1,43 +1,54 @@
 package data.structure.queue;
 
-
 import data.structure.list.LinkedList;
 
-public class Queue<T extends Comparable>
-{
+public class Queue<T extends Comparable> {
+
     private LinkedList<T> items = new LinkedList<T>();
 
-    public void enqueue(T value)
-    {
+    /**
+     * Добавляет элемент в очередь
+     *
+     * @param value - значение добавляемое в очередь
+     */
+    public void enqueue(T value) {
         items.addFirst(value);
     }
 
-    public T dequeue() throws Exception
-    {
-        if (items.size() == 0)
-        {
-            throw new Exception("The data.structure.queue is empty");
-        } else
-        {
+    /**
+     * Удаляет первый элемент в очереди и возвращает его
+     * Если очередь пуста, выбрасывается исключение IllegalStateException.
+     *
+     * @return первый элемент в очереди
+     */
+    public T dequeue() {
+        if (items.size() == 0) {
+            throw new IllegalStateException("The queue is empty");
+        } else {
             T last = items.getTail().getValue();
             items.removeLast();
             return last;
         }
     }
 
-    public T peek() throws Exception
-    {
-        if (items.size() == 0)
-        {
-            throw new Exception("The data.structure.queue is empty");
-        } else
-        {
+    /**
+     * Вовзращает первый элемент из очереди
+     * Если очередь пуста, выбрасывается исключение IllegalStateException.
+     *
+     * @return первый элемент из очереди
+     */
+    public T peek() {
+        if (items.size() == 0) {
+            throw new IllegalStateException("The queue is empty");
+        } else {
             return items.getTail().getValue();
         }
     }
 
-    public int size()
-    {
+    /**
+     * @return возвращает количество элементов в очереди
+     */
+    public int size() {
         return items.size();
     }
 }
