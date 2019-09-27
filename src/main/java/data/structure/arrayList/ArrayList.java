@@ -166,7 +166,7 @@ public class ArrayList<T extends Comparable> {
     /**
      * @return количество элементов в  коллекции
      */
-    public int getSize() {
+    public int size() {
         return size;
     }
 
