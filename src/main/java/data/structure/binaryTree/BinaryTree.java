@@ -1,26 +1,39 @@
 package data.structure.binaryTree;
 
-
 import data.model.BinaryTreeNode;
 
 public class BinaryTree<T extends Comparable> {
-    private BinaryTreeNode<T> head;
-    private int count;
 
+    private BinaryTreeNode<T> head;
+    private BinaryTreeNode<T> parent;
+    private int size;
+
+    /**
+     * Добавляет значение в дерево
+     *
+     * @param value - добавляемое значение
+     */
     public void add(T value) {
         if (head == null) {
-            head = new BinaryTreeNode<T>(value);
+            head = new BinaryTreeNode<>(value);
         } else {
             addTo(head, value);
         }
+        size++;
     }
 
+    /**
+     * Ищет место для передаваемого узла и вставляет его в дерево
+     *
+     * @param node - корень поддерева
+     * @param value - вставляемое значение в дерево
+     */
     private void addTo(BinaryTreeNode<T> node, T value) {
         // Случай 1: Вставляемое значение меньше значения узла
         if (value.compareTo(node.getValue()) < 0) {
             // Если нет левого поддерева, добавляем значение в левого ребенка,
             if (node.getLeft() == null) {
-                node.setLeft(new BinaryTreeNode<T>(value));
+                node.setLeft(new BinaryTreeNode<>(value));
             } else {
                 // в противном случае повторяем для левого поддерева.
                 addTo(node.getLeft(), value);
@@ -29,15 +42,20 @@ public class BinaryTree<T extends Comparable> {
         // Случай 2: Вставляемое значение больше или равно значению узла.
         else {
             if (node.getRight() == null) {
-                node.setRight(new BinaryTreeNode<T>(value));
+                node.setRight(new BinaryTreeNode<>(value));
             } else {
                 addTo(node.getRight(), value);
             }
         }
     }
 
-    private BinaryTreeNode<T> parent;
-
+    /**
+     * Удаляет элемент из дерева
+     *
+     * @param value - удаляемое значение
+     * @return - возвращает true если узел был успешно удален из дерева,
+     * false - если данного узла нет в дереве
+     */
     public boolean remove(T value) {
         BinaryTreeNode<T> current;
 
@@ -46,7 +64,7 @@ public class BinaryTree<T extends Comparable> {
         if (current == null) {
             return false;
         }
-        count--;
+        size--;
 
         // Случай 1: Если нет детей справа, левый ребенок встает на место удаляемого.
         if (current.getRight() == null) {
@@ -58,7 +76,9 @@ public class BinaryTree<T extends Comparable> {
                     // Если значение родителя больше текущего,
                     // левый ребенок текущего узла становится левым ребенком родителя.
                     parent.setLeft(current.getLeft());
-                } else if (result < 0) { // Если значение родителя меньше текущего, левый ребенок текущего узла становится правым ребенком родителя.
+                } else if (result < 0) {
+                    // Если значение родителя меньше текущего,
+                    // левый ребенок текущего узла становится правым ребенком родителя.
                     parent.setRight(current.getLeft());
                 }
             }
@@ -112,10 +132,20 @@ public class BinaryTree<T extends Comparable> {
         return true;
     }
 
+    /**
+     * @param value - искомое значение
+     * @return возвращает true если элемент был найден в дереве, иначе false
+     */
     public boolean contains(T value) {
         return findWithParent(value) != null;
     }
 
+    /**
+     * Возвращает узел значение которого равно value и запоминаем его parent
+     *
+     * @param value - искомое значение
+     * @return узел со значением value
+     */
     private BinaryTreeNode findWithParent(T value) {
         // Попробуем найти значение в дереве.
         BinaryTreeNode current = head;
@@ -139,15 +169,25 @@ public class BinaryTree<T extends Comparable> {
         return current;
     }
 
+    /**
+     * @return возвращает количество элементов в дереве
+     */
     public int size() {
-        return count;
+        return size;
     }
 
+    /**
+     * Удаляет все элементы из дерева
+     */
     public void clear() {
         head = null;
-        count = 0;
+        parent = null;
+        size = 0;
     }
 
+    /**
+     * Префиксный обход дерева
+     */
     public void preOrderTraversal() {
         preOrderTraversal(head);
     }
@@ -160,6 +200,9 @@ public class BinaryTree<T extends Comparable> {
         }
     }
 
+    /**
+     * Постфиксный обход дерева
+     */
     public void postOrderTraversal() {
         postOrderTraversal(head);
     }
@@ -172,6 +215,9 @@ public class BinaryTree<T extends Comparable> {
         }
     }
 
+    /**
+     * Инфиксный обход дерева
+     */
     public void inOrderTraversal() {
         inOrderTraversal(head);
     }
